@@ -60,7 +60,7 @@ export default function RecruiterOnboardingPage() {
     }
 
     setTimeout(() => {
-      router.push('/landing')
+      router.push('/dashboard/recruiter')
     }, 1400)
   }
 
