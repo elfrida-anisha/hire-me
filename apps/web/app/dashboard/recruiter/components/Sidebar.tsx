@@ -1,5 +1,5 @@
 'use client'
-
+import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import { BriefcaseBusiness, CircleHelp, LayoutDashboard, LogOut, Users } from 'lucide-react'
 
@@ -41,11 +41,12 @@ export default function Sidebar() {
               key={item.name}
               type="button"
               onClick={() => setActive(item.name)}
-              className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left text-sm font-semibold transition ${
+              className={cn(
+                'flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left text-sm font-semibold transition',
                 isActive
-                  ? 'bg-bg-plus text-text-main'
-                  : 'text-text-muted hover:bg-bg-plus hover:text-text-main'
-              }`}
+                  ? 'bg-bg-page text-text-main'
+                  : 'text-text-muted hover:bg-bg-page hover:text-text-main',
+              )}
             >
               <Icon />
               {item.name}
