@@ -1,6 +1,7 @@
 'use client'
+import type { CandidateStatus } from '../data'
 
-type TabId = 'applied' | 'under_review' | 'shortlisted'
+type TabId = CandidateStatus
 
 type PipelineTabsProps = {
   activeTab: TabId

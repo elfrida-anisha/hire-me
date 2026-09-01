@@ -1,4 +1,5 @@
 import type { Candidate } from '../data'
+import { getInitials } from '@/lib/utils'
 
 type CandidateRowProps = {
   candidate: Candidate
@@ -7,31 +8,27 @@ type CandidateRowProps = {
 }
 
 export default function CandidateRow({ candidate, onViewProfile, onContact }: CandidateRowProps) {
-  const initials = candidate.name
-    .split(' ')
-    .map((name) => name[0])
-    .join('')
-    .slice(0, 2)
+  const initials = getInitials(candidate.name)
 
   return (
     <div className="flex flex-col gap-5 rounded-xl border border-gray-200 bg-white p-5 transition hover:shadow-sm md:flex-row md:items-center md:justify-between">
       <div className="flex min-w-0 items-center gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#F3F4F6] font-semibold text-[#0F172A]">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-bg-page font-semibold text-text-main">
           {initials}
         </div>
 
         <div className="min-w-0">
-          <h3 className="font-semibold text-[#0F172A]">{candidate.name}</h3>
+          <h3 className="font-semibold text-main">{getInitials(candidate.name)}</h3>
 
-          <p className="text-sm text-[#6B7280]">Applied for: {candidate.position}</p>
+          <p className="text-sm text-text-muted">Applied for: {getInitials(candidate.position)}</p>
 
-          <p className="mt-1 text-xs text-[#6B7280]">Applied {candidate.appliedAt}</p>
+          <p className="mt-1 text-xs text-text-muted">Applied {getInitials(candidate.appliedAt)}</p>
 
           <div className="mt-3 flex flex-wrap gap-2">
             {candidate.skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-md bg-[#F3F4F6] px-2.5 py-1 text-xs font-medium text-[#6B7280]"
+                className="rounded-md bg-bg-page px-2.5 py-1 text-xs font-medium text-text-muted"
               >
                 {skill}
               </span>
@@ -44,7 +41,7 @@ export default function CandidateRow({ candidate, onViewProfile, onContact }: Ca
         <button
           type="button"
           onClick={() => onViewProfile(candidate)}
-          className="rounded-lg border border-[#0F172A] px-4 py-2 text-sm font-semibold text-[#0F172A] transition hover:bg-[#F3F4F6]"
+          className="rounded-lg border border-text-main px-4 py-2 text-sm font-semibold text-text-main transition hover:bg-bg-page"
         >
           View Profile
         </button>
@@ -52,7 +49,7 @@ export default function CandidateRow({ candidate, onViewProfile, onContact }: Ca
         <button
           type="button"
           onClick={() => onContact(candidate)}
-          className="rounded-lg bg-[#00C378] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#00ad6b]"
+          className="rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
         >
           Contact
         </button>

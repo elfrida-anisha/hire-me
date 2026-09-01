@@ -14,7 +14,7 @@ export interface RecruiterProfileData {
 
 export default function RecruiterOnboardingPage() {
   const router = useRouter()
-
+  const REDIRECT_INTERVAL_IN_MS = 1400
   const [companyName, setCompanyName] = useState('')
   const [companyMail, setCompanyMail] = useState('')
   const [companyUrl, setCompanyUrl] = useState('')
@@ -61,7 +61,7 @@ export default function RecruiterOnboardingPage() {
 
     setTimeout(() => {
       router.push('/dashboard/recruiter')
-    }, 1400)
+    }, REDIRECT_INTERVAL_IN_MS)
   }
 
   const handleBack = () => {
